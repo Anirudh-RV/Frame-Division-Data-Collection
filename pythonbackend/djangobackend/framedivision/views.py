@@ -24,7 +24,7 @@ from PIL import Image
 import numpy as np
 import cv2
 import random
-
+import requests
 
 @csrf_exempt
 def index(request):
@@ -97,16 +97,17 @@ def index(request):
     elapsed_time = time.time() - start_time
     print("Performace measure : "+str(elapsed_time))
 
-    '''
+
     for images in image_names:
         print("Sending to back end...")
-        files = {'file': open(images, 'rb')}
+        print("image name : "+images)
+        files = {'file': open('assets/'+images, 'rb')}
         headers = {
             'username': username,
         }
         response = requests.request("POST", 'http://192.168.1.8:4000/upload', files=files, headers=headers)
         print(response)
-    '''
+
     print("Backend Process Complete")
     context = {"data":"data"}
     return render(request, 'index.html', context)

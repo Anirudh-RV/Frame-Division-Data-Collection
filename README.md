@@ -33,9 +33,19 @@ http://www.srikanthtechnologies.com/blog/python/enable_cors_for_django.aspx
 
 Requirements :
 1. Divide a video into frames using OpenCV in python
-2. Make the application dynamic, enable frontend interactions 
-
+2. Make the application dynamic, enable frontend interactions
+3. Optimize the system
 
 ########--------------------------------------------------------------------------------------------------
-to accomplish requirement: 1
+to accomplish requirement: 1 (COMPLETE)
 1. Divide a video into frames using OpenCV in python
+
+########--------------------------------------------------------------------------------------------------
+to accomplish requirement: 2 (COMPLETE)
+2. Make the application dynamic, enable frontend interactions
+
+########--------------------------------------------------------------------------------------------------
+to accomplish requirement: 3
+3. Optimize the system
+  a. How it sends requests.
+  b. Problems with django back

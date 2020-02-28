@@ -25,11 +25,11 @@ app.use(bodyParser.json())
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
       var fs = require('fs');
-      var dir = 'public/uploaded/'+req.headers['username'];
+      var dir = 'public/Downloaded/'+req.headers['username'];
       if (!fs.existsSync(dir)){
           fs.mkdirSync(dir);
       }
-      var dir = 'public/uploaded/'+req.headers['username']+'/images';
+      var dir = 'public/Downloaded/'+req.headers['username']+'/images';
       if (!fs.existsSync(dir)){
           fs.mkdirSync(dir);
       }
@@ -59,12 +59,12 @@ app.post('/saveastextfile',function(req,res){
 
     return res.send(req.body.username)
 })
+*/
 
-var folderpath = './public/uploaded';
-
+var folderpath = './public/Downloaded';
 
 app.post('/downloadfiles', function(req, res) {
-  var userfolderpath = folderpath+"/"+req.body.username+"/output"
+  var userfolderpath = folderpath+"/"+req.body.username
   zipFolder(userfolderpath, folderpath+'/'+req.body.username+'.zip', function(err) {
     if(err) {
         console.log('error: ', err);
@@ -74,7 +74,7 @@ app.post('/downloadfiles', function(req, res) {
   });
   res.download(folderpath + '/'+req.body.username+'.zip');
 });
-*/
+
 
 app.post('/download',function(req,res){
 
@@ -109,6 +109,8 @@ app.post('/download',function(req,res){
     console.log('size: ' + info.size)
   })
 video.pipe(fs.createWriteStream(dir+'/'+videoname+'.mp4'))
+return res.send('Done')
+
 })
 
 app.get('/',function(req,res){
